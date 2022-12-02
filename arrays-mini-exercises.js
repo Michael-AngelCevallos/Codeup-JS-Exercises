@@ -1,5 +1,6 @@
 
 // ============================= !! MINI-EXERCISE 1 !!
+console.log('-----> MINI-EXERCISE 1 <------');
 
 const classMates = ['Jona', 'Action', 'Nando']
 
@@ -18,7 +19,7 @@ console.log('3. Reassign the second element to be the string "Justin".');
 classMates[1]= 'Justin'
 console.log(classMates)
 //#4
-console.log('4. write a program that allows user to enter 10 grocery items.');
+console.log('4. write a program that prompts user to enter 10 grocery items.');
 
 const grocerItems = [];
 
@@ -29,16 +30,16 @@ for ( let i = 0; i < 4; i += 1){
 
 console.log(grocerItems)
 
-
+/**
+ *
+ * /////////------> Loops Notes <-------- ///////////////
+ */
 
 
 console.log(' LOOP NOTES')
-/**
- *
- * Loops Notes
- */
 
-console.log(' #1 EXAMPLE')
+
+console.log('EXAMPLE #1')
 let pies = [ 'apple', 'cherry', 'key lime', 'huckleberry'];
               //0        1          2              3
 for (let i = 0; i < pies.length; i += 1){ // pies.length gives you index #
@@ -46,11 +47,14 @@ for (let i = 0; i < pies.length; i += 1){ // pies.length gives you index #
     console.log(pies[i]);
 }
 
+console.log('EXAMPLE #2');
+
 for (let i = pies.length - 1; i >= 0; i -= 1){
     console.log[i];
 }
 
 
+console.log("ForEach LOOPS");
 /** ForEach LOOPS
  *
  *  //// SYNTAX/////
@@ -77,4 +81,33 @@ for (let i = pies.length - 1; i >= 0; i -= 1){
  *
  * numbers.forEach();
  *
+ *
+ *
+ * /// this (below) outputs 9
+ * const numbers = [3, 2, 4];
+ * let total = 0;
+ * numbers.forEach(function(number){
+ *      total += number;
+ * });
+ * console.log(total);
  */
+
+// ============================= !! MINI-EXERCISE 2 !!
+console.log('-----> MINI-EXERCISE 2 <---------');
+
+    console.log('1. Loop through your classmates array with a for loop to log each classmate.')
+
+for (let i = 0; i < classMates.length; i += 1){ // classMates.length gives you index #
+
+    console.log(classMates[i]);
+}
+
+
+console.log('2. Loop through your classmates array with a forEach loop to log each classmate.')
+
+classMates.forEach(function(element) {
+    console.log(element);
+
+});
+
+
