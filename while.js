@@ -88,3 +88,26 @@ for(let i = 0, num = 2; i < 16; i++){
  NextIntroduction
 
  */
+
+
+
+function getRandomNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+let conesToSell = getRandomNum(50, 100);
+do{
+    let conesToBuy = getRandomNum(1, 5);
+    if (conesToBuy <= conesToSell){
+        console.log(`${conesToBuy} cones sold...`);
+        conesToSell -= conesToBuy; // conesToSell = conesToSell - conesToBuy
+    }else {
+        console.log(`Cannot sell you ${conesToBuy} cones, I only have ${conesToSell}....`);
+        console.log(`${conesToSell} cones sold...`)
+        conesToSell -= conesToSell;
+
+    }if (conesToSell === 0){
+        console.log(" Hell Yea! I have sold them all!!!")
+        break;
+    }
+}while (conesToSell > 0)
+
