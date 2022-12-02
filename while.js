@@ -25,9 +25,34 @@
 
  */
 
+let numMultiply = 2;
+let counter = 0;
+while(counter < 16){
+    console.log(numMultiply)
+    numMultiply = numMultiply *= 2;
+    counter++;
+}
+
+
+
+/*/////////   OR ///BUT, TOP IS BETTER EXAMPLE/////
+
 for(let i = 2; i <= 65536; i *= 2){
     console.log(i)
 }
+
+*/
+
+/*/OR//
+
+
+for(let i = 0, num = 2; i < 16; i++){
+    console.log(num);
+    num *= 2
+}
+
+*/
+
 /**
  - Do While Loop
  1. An ice cream seller can't go home until she sells all of her cones. First write enough code that generates a random number between 50 and 100 representing the amount of cones to sell before you start your loop. Inside of the loop your code should generate another random number between 1 and 5, simulating the amount of cones being bought by her clients. Use a do-while loop to log to the console the amount of cones sold to each person. The below code shows how to get the random numbers for this exercise.
