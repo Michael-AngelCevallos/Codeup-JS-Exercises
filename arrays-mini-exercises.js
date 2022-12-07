@@ -94,7 +94,8 @@ console.log("ForEach LOOPS");
 
 // ============================= !! MINI-EXERCISE 2 !!
 console.log('-----> MINI-EXERCISE 2 <---------');
-
+// classMates HAS BEEN DECLARED ALREADY IN ABOVE EXAMPLES///
+// NORMALLY YOU WOULD HAVE TO PUT ' let classMates = [ names go here ];
     console.log('1. Loop through your classmates array with a for loop to log each classmate.')
 
 for (let i = 0; i < classMates.length; i += 1){ // classMates.length gives you index #
@@ -108,6 +109,14 @@ console.log('2. Loop through your classmates array with a forEach loop to log ea
 classMates.forEach(function(element) {
     console.log(element);
 
+});
+
+
+console.log('USING AN ARROW FUNCTION TODO SAME AS ABOVE');
+/** USING AN ARROW FUNCTION TODO SAME AS ABOVE */
+
+classMates.forEach((element) =>{
+    console.log(element)
 });
 
 
