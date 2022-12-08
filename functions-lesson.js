@@ -10,7 +10,7 @@
 //let iBreakThings= isEven(true);
 //console.log(iBreakThings);
 let message = sayHello("Michael")
-
+console.log(message)
 //function myFunction(name){
    // return ("Thank you, " + name + " you have ran my function");
 //}
@@ -95,23 +95,8 @@ var random = Math.floor((Math.random() * 3) + 1);
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
-console.log<!DOCTYPE html>
-<html lang="en">
-    <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-<script>
 
 
-
-
-</script>
-
-</body>
-</html>
 removeFirstCharacter('bob');//  returns 'ob'
 removeFirstCharacter('jason');// returns 'ason'
 
@@ -123,8 +108,7 @@ function removeFirstCharacter(input){
     //} else {
     //    return input.slice(1)
     //}
-    const output = (input) = (input.length === 0) ? input : input.slice(1);
-
-    )
+    const output = (input) = (input.length === 0) ? input : input.slice(1);{
         return output;
+    }
 }
