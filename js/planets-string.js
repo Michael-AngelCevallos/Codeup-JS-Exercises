@@ -13,7 +13,6 @@
     const planetsArray = planetsString.split("|");
     const planets = ["Mercury","Venus","Earth","Mars","Jupiter","Saturn","Uranus","Neptune"];
      console.log(planetsArray);
-
     /**
      * TODO:
      * Create a string with <br> tags between each planet. console.log() your
