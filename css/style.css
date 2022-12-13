@@ -7,7 +7,13 @@ body {
     text-transform: uppercase;
 }
 
-h2 {
+h1 {
     font-family: "Times New Roman";
-    color:purple;
+    color:red;
+}
+
+.fancy-header{
+    color: purple;
+    text-decoration: underline;
+
 }
