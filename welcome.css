@@ -1,0 +1,13 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.section-header {
+    color: blue;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-family: "Times New Roman";
+    color:purple;
+}
