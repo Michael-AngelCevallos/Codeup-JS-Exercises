@@ -50,3 +50,22 @@ h1.container-heading{
 
 /* Pseudo Class */
 
+.ask:hover{
+    color:pink;
+}
+
+.ask:active{
+    color:purple;
+}
+
+.ask:visited{
+    color:brown;
+}
+
+.btn{
+    transition: all ease 10s;
+}
+
+.hex-example{
+
+}
