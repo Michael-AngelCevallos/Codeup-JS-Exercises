@@ -1,7 +1,9 @@
+
+/* HOW TO ACCESS HTML ELEMENT */
 body {
     font-family: Arial, sans-serif;
 }
-
+/* HOW TO ACCESS A CLASS */
 .section-header {
     color: blue;
     text-transform: uppercase;
@@ -15,5 +17,55 @@ h1 {
 .fancy-header{
     color: purple;
     text-decoration: underline;
+
+}
+
+.container-heading, #section-heading{
+    font-size: 10px;
+}
+
+.container-heading{
+
+}
+
+/*Descendant Selector*/
+#container h2{
+
+}
+
+/* Direct Child */
+#container>h1{
+    color: purple;
+}
+
+/* #container>h1:nth-child(2){
+    color:
+    }
+ */
+
+/* combining selectors */
+h1.container-heading{
+    color:red;
+}
+
+/* Pseudo Class */
+
+.ask:hover{
+    color:pink;
+}
+
+.ask:active{
+    color:purple;
+}
+
+.ask:visited{
+    color:brown;
+}
+
+.btn{
+    transition: all ease 10s;
+}
+
+.hex-example{
 
 }
