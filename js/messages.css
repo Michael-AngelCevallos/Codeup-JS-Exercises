@@ -1,0 +1,91 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Ubuntu, sans-serif;
+}
+
+.message{
+    background: orange;
+    padding: .5em;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    width: 80%;
+    margin: .5em auto;
+}
+
+.message-info{
+    background:  rgb(208, 221, 252);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px ;
+    color: rgb(78, 78, 159);
+    font-weight: bold;
+}
+
+.message-success{
+    background:  rgb(214, 242, 220);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px ;
+    color: rgb(57, 113, 70);
+    font-weight: bold;
+}
+
+.message-warning{
+    background:  rgb(252, 250, 206);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px ;
+    color: rgb(156, 142, 73);
+    font-weight: bold;
+}
+
+.message-error{
+    background:  rgb(244, 212, 215);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px ;
+    color: rgb(132, 52, 67);
+    font-weight: bold;
+}
+
+/*!*----------- OOOOOORRRRRR------------------*!*/
+/*div.message.message-info{*/
+/*    background:  rgb(208, 221, 252);*/
+/*    margin: 20px;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px ;*/
+/*    color: rgb(78, 78, 159);*/
+/*    font-weight: bold;*/
+
+/*}*/
+
+/*div.message.message-success{*/
+/*    background:  rgb(214, 242, 220);*/
+/*    margin: 20px;*/
+/*    padding: 10px;*/
+/*   border-radius: 5px ;*/
+/*    color: rgb(57, 113, 70);*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*div.message.message-warning{*/
+/*    background:  rgb(252, 250, 206);*/
+/*    margin: 20px;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px ;*/
+/*    color: rgb(156, 142, 73);*/
+/*    font-weight: bold;*/
+/*}*/
+
+/*div.message.message-error {*/
+/*    background:  rgb(244, 212, 215);*/
+/*    margin: 20px;*/
+/*    padding: 10px;*/
+/*    border-radius: 5px ;*/
+/*    color: rgb(132, 52, 67);*/
+/*    font-weight: bold;*/
+
+/*}*/
