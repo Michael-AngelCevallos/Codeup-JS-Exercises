@@ -9,9 +9,11 @@ body {
 
 }
 
-.div.background-box{
-    margin: 50px;
-    background-color: rgb(241, 145, 53);
+.background-box{
+    margin: 0;
+    justify-content: center;
+    /*background-color: rgb(241, 145, 53);*/
+    background-color: red;
 }
 h1, h2, h3 {
     padding: 0;
