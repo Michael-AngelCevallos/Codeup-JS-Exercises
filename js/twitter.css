@@ -31,12 +31,11 @@ a {
     width: 100%;
 }
 .nav {
+
     display: flex;
     list-style-type: none;
     padding:1.5em;
     justify-content: space-between;
-
-
 }
 
 .nav-link {
@@ -60,7 +59,7 @@ a {
 }
 
 .profile-form{
-    line-height: 100px;
+    height: 100px;
 }
 .btn {
     border: 1px solid var(--main-link-color);
