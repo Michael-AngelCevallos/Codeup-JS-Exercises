@@ -7,8 +7,7 @@ body{     /*BODY ELEMENT CONTAINS ALL THE CONTENTS OF AN HTML DOCUMENT*/
 
 nav {
     background: rgb(193,193,193);
-    display: flex;
-    align-items: center;
+
 }
 
 nav a {
@@ -27,7 +26,7 @@ nav li:nth-of-type(6){
 }
 ul{
     list-style: none;
-    padding: 0px;
+    padding: 90px;
     margin-left: auto;
     display: flex; /* PUTS WORDS SIDE BY SIDE */
 
