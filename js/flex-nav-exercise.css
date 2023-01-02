@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;/* LINKS WIDTH AND HEIGHT TO PADDING AND BORDER, IF YOU SET BOX-SIZING: BORDER -BOX ON AN ELEMENT, NOW PADDING AND BORDER ARE INCLUDED IN WIDTH AND HEIGHT!!*/
 }
+
 body{     /*BODY ELEMENT CONTAINS ALL THE CONTENTS OF AN HTML DOCUMENT*/
     margin: 0;
 }
@@ -18,15 +19,17 @@ nav a {
 }
 nav li:nth-of-type(5){
     margin-left: auto;
-    margin-left: 500px;
+
 }
+
 nav li:nth-of-type(6){
     display: flex;
 
 }
+
 ul{
     list-style: none;
-    padding: 90px;
+    padding: 0px;
     margin-left: auto;
     display: flex; /* PUTS WORDS SIDE BY SIDE */
 
