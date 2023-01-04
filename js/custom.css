@@ -4,9 +4,9 @@
 }
 h1.display-4 {
     text-align: center;
-    font-size: 425%;
+    font-size: 365%;
 }
-.d-sm-none .d-md-block
+.d-sm-none .d-md-block,
 .badge-primary {
     background: black;
 }
@@ -34,7 +34,7 @@ div.container {
     background: white;
     width: 100%;
     opacity: .5;
-    padding: 0px;
+    padding: 0;
 }
 .next-step {
     float: right;
