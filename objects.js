@@ -485,9 +485,10 @@ console.log('---->>> OBJECTS EXERCISE <--------');
  *  *
  *  */
 console.log("---->EXERCISE # 1<-------")
-const person =  {
-    firstName: "Michael",
-    lastName: "Cevallos"
+
+const person = {
+    firstName: "Rick",
+    lastName: "Sanchez"
 }
 
 console.log(person.firstName);
@@ -516,8 +517,17 @@ console.log(person.lastName);
 console.log(" -------->EXERCISE # 2<------------")
 
 person.sayHello = function(){
-    return `YEEEOOO Wheeet EEEHHHP from ${this.firstName} ${this.lastName}`
+    return "Hello from " + person.firstName + " " + person.lastName + " !";
 }
+
+
+///OR <-------!!!!!
+
+// person.sayHello = function(){
+//     return `Hello from ${this.firstName} ${this.lastName}`
+// }
+
+
 console.log(person.sayHello());
 
 
@@ -529,7 +539,7 @@ person.middleName = 'Angel'
 console.log(person);
 
 
-let arr = ['jason', 'adam', 4, 2, {firstName: 'Jason', lastName: "Merrell"}];
+// let arr = ['jason', 'adam', 4, 2, {firstName: 'Jason', lastName: "Merrell"}];
 
 
 console.log("-----> EXERCISE # 3 HEB QUESTION<------")
@@ -566,9 +576,7 @@ shoppers.forEach(function(shopper){
         console.log(`${shopper.name} has a bill of ${shopper.amount.toLocaleString('en-US', {style: 'currency', currency : 'USD'})}, and did not recieve a discount.\n${shopper.name} will have to spend ${remaining} more to receive 12% discount.\n `)
         //Shoppers That Do NOT get discount
     }
-})
-
-
+});
 
 
 /**  console.log("------> MINI EXERCISE #2 <-------")
@@ -593,6 +601,7 @@ shoppers.forEach(function(shopper){
 
 
 console.log( "---->> #4 CREATING AN ARRAY OF 5 BOOKS AND CONSOLE.LOGGING DIFFRENT OUTPUTS!-----")
+
 /** TODO:
  * Create an array of objects that represent books and store it in a
  * variable named `books`. Each object should have a title and an author
@@ -607,10 +616,10 @@ console.log( "---->> #4 CREATING AN ARRAY OF 5 BOOKS AND CONSOLE.LOGGING DIFFREN
  */
 
 
-let fruits = ['orange', 'banana', 'tomato'];
-let booksEx = [{}, {}, {}];
-let multiArr= [['orange', 'banana', 'tomato'], [], []];
-console.log(multiArr[0],[2]);
+// let fruits = ['orange', 'banana', 'tomato'];
+// let booksEx = [{}, {}, {}];
+// let multiArr= [['orange', 'banana', 'tomato'], [], []];
+// console.log(multiArr[0],[2]);
 
 let books = [
     {
@@ -658,10 +667,8 @@ let books = [
 
 
 console.log(books[0].title);
-console.log(books[1].author.lastName);
-console.log(books[4].author.firstName);
-
-
+console.log(books[0].author.firstName) // "Douglas"
+console.log(books[0].author.lastName) // "Adams"
 
 
 
@@ -691,11 +698,12 @@ console.log("-------->EXERCISE # 5<---------")
  *      ---
  *      ...
  */
+
 let oneConsoleLogToRuleThemAll = "";
 books.forEach(function(book, index){
     let bookNumber = index + 1;
     let fullName = `${book.author.firstName} ${book.author.lastName}`
-    let message = `Book # ${bookNumber} \nTitle: ${book.title}\nAuthor: ${fullName}---`;
+    let message = `Book # ${bookNumber} \nTitle: ${book.title}\nAuthor: ${fullName}`;
     console.log(message);
     oneConsoleLogToRuleThemAll += message;
 });

@@ -1,7 +1,7 @@
 (function(){
     "use strict";
 
-    var planets = [
+    let planets = [
         'Mercury',
         'Venus',
         'Earth',
@@ -35,7 +35,7 @@
     console.log('Removing "The Sun" from the beginning of the planets array.');
     console.log(planets);
     planets.shift();
-    console.log(planets)
+    console.log(planets);
 
     console.log('#4')
     console.log('Removing "Pluto" from the end of the planets array.');
@@ -48,11 +48,11 @@
     console.log(planets.indexOf("Earth"));
 
 
-    console.log('#6')
+    console.log('#6');
     console.log("Reversing the order of the planets array.");
     console.log(planets);
-    planets.reverse()
-    console.log(planets)
+    planets.reverse();
+    console.log(planets);
 
     console.log('#7')
     console.log("Sorting the planets array.");

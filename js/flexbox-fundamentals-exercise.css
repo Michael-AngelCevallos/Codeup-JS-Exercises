@@ -1,7 +1,8 @@
 * {box-sizing: border-box;}
 
 body {
-    margin: 0;
+    /*margin: 0;*/
+    margin-bottom: 50px;
     padding: 0;
     background: lightskyblue;
     font-family: Chalkboard, sans-serif;
@@ -19,8 +20,8 @@ h2, h3 {
 .container {
     margin: 0 auto;
     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
 }
 
 .green-box {
@@ -45,7 +46,7 @@ h2, h3 {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 section {
