@@ -1,4 +1,4 @@
-(function(){
+
     "use strict";
 
     /**
@@ -38,7 +38,7 @@ var classMates = ['Mike', 'John', 'Alex', 'James'];
      * TODO:
      * Refactor your above code to use a `forEach` loop
      */
-    console.log('-With refactor-')
+    console.log('-With ForEach loop-')
 
         classMates.forEach(function(element){
             console.log(element)
@@ -73,18 +73,13 @@ var classMates = ['Mike', 'John', 'Alex', 'James'];
      }
      function third(arr){
          return arr[2]
-     }
+     };
 
      console.log(first(nameArr));
     console.log(second(nameArr));
     console.log(third(nameArr));
 
-})();
-
-
-
-
-
+;
 
 
 
