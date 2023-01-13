@@ -5,17 +5,54 @@
     <title>Title</title>
 </head>
 <body>
-    <div id="parent-div">
-        <h1 id="elementId">yo 1</h1>
-        <h1 id="ChangeWithVS">yo 2</h1>
+    <div class="codeup" id="parent-div">
+        <h1 class="codeup" id="elementId">Header (h1)</h1>
+
+        <p class="firstP" id="firstP">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
 
     </div>
 
+    <ul class="list" id="list">
+        <li>
+            Tacos
+        </li>
+        <li>
+            Burritoes
+        </li>
+        <li>
+            Torta's
+        </li>
+    </ul>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
-    $(function() {
-        alert( 'The DOM has finished loading!' );
+    // CHANGES COLOR OF ALL TEXT IN PARENT-DIV BLUE
+    $('.codeup').css('border', '1px solid red');
+
+    //CHANGES FONT SIZE OF H1 TO BIGGER FONT SIZE
+    $('#elementId').css("fontSize", '60px');
+
+    //CHANGES TEXT IN PARAGRAPH TO BOLD
+    $('#firstP').css("fontWeight", "bold");
+
+    // OVERITES CHANGE OF BLUE AND CHANGES TEXT IN PARAGRAPH TO RED
+    $('#list').css('fontSize','20px');
+
+
+    $('h1, p, li').css({'background-color': 'yellow', 'border-radius': '12px'});
+
+    $('html').css('background-color', 'blue');
+
+    $('.codeup').mouseenter(function (){
+        $( this ).css( "color", "orange" );
+    })
+        .mouseleave(function() {
+            $( this ).css( "color", "purple" );
+
     });
+
 </script>
 </body>
 </html>
