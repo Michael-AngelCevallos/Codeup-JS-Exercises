@@ -106,17 +106,50 @@
     // first, last, next, prev, children, parent, eq
 
     // .first()
+    //todo highlights first article
 
     // $('article').first().css('background', 'lime');
 
     // .last()
+    // todo highlights last article
 
     // $('article').last().css('background', 'lime');
 
     // .children()
 
+    // todo highlights first child of FIRST set of sections on html
     // $('section').first().children().css('background', 'yellow');
+
+    //todo does the same as above code
     // $('section').first().children('article').css('background', 'yellow');
+
+
+    // todo BREAKDOWN
+    // $('section')
+    //         .first() // selects first section on page
+    //         .children()
+    //         .first()
+    //         .next()
+    //         .css('background', 'yellow');
+
+
+
+
+    // TODO SELECTS BREAD AND HIGHLIGHTS YELLOW
+    // $('main')
+    //         .children()
+    //         .last()
+    //         .children()
+    //         .last()
+    //         .children()
+    //         .first()
+    //         .next()
+    //         .next()
+    //         .css('background', 'yellow');
+
+
+
+
 
     // .parent()
 
