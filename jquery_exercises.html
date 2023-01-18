@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="jquery_exercises.css">
+</head>
+<body>
+<div class="page-wrapper">
+    <header class="container">
+
+            <div class= "login" id="login">
+                <button>Log In</button>
+
+        </div>
+    </header>
+</div>
+<div class="column"></div>
+
+    <div class="codeup" id="parent-div">
+        <h1 class="codeup" id="elementId">My H1 Header (h1)</h1>
+
+        <p class="firstP" id="firstP">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+
+
+    </div>
+
+<p>Please type something into this form:</p>
+<form class="filter">
+    <input type="text" id="textfield" name="textfield" placeholder="Type Here"/>
+    <ul id="filter" class="filter">
+        <li>
+            Items 1
+        </li>
+        <li>
+            Items 2
+        </li>
+        <li>
+            Items 3
+        </li>
+        <li>
+            Items 4
+        </li>
+        <li>
+            Items 5
+        </li>
+    </ul>
+</form>
+
+    <div class="container1">
+    <ul class="ul" id="list" >
+        <li >
+            Tacos
+        </li>
+        <li>
+            Burritoes
+        </li>
+        <li>
+            Torta's
+        </li>
+        <li>
+            Nachos
+        </li>
+        <li>
+            Fajitas
+        </li>
+    </ul>
+    </div>
+    <div class="container">
+        <div class="col-8">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_mDnmhAgZkb.json"  background="transparent"  speed="1"  style="width: 350px; height: 350px;"  loop controls autoplay></lottie-player>
+    </div>
+    </div>
+<div class="mobile-menu">
+    <div class="close-menu">
+
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    // CHANGES COLOR OF ALL TEXT IN PARENT-DIV BLUE
+    $('.codeup').css('border', '1px solid red');
+
+    //CHANGES FONT SIZE OF H1 TO BIGGER FONT SIZE
+    $('#elementId').css("fontSize", '60px');
+
+    //CHANGES TEXT IN PARAGRAPH TO BOLD
+    $('#firstP').css("fontWeight", "bold");
+
+    // OVERITES CHANGE OF BLUE AND CHANGES TEXT IN PARAGRAPH TO RED
+    $('#list').css('fontSize','20px');
+
+    // HIGHLIGHTS BACKGROUND PURPLE
+    // $('h1, p, li').css('background-color', 'purple');
+
+
+    $('html').css('background-color', 'blue');
+
+    // $('.codeup').mouseenter(function (){
+    //     $( this ).css( "color", "orange" );
+    // })
+    //     .mouseleave(function() {
+    //         $( this ).css( "color", "blue" );
+    //
+    // });
+
+    $('h1').click(function (){
+        $('h1').css("background-color", 'orange');
+    })
+
+    $('p').dblclick(function(){
+        $(this).css("font-size", '18px');
+    })
+
+
+
+    ////----->> OR MOUSEENTER/MOUSELEAVE METHOD <<----------
+
+    // $('li').mouseenter(function (){
+    //     $('li').css( "color", "red" );
+    // })
+    //     .mouseleave(function() {
+    //         $('li').css( "color", "black" );
+    //
+    // });
+
+
+
+    // pull over menu code
+    $('#login').click(function (){
+        $(this).css('background-color', 'red');
+    })
+    $('.menu, .close-menu').click(function(){
+        $('.mobile-menu').toggleClass('open');
+    });
+
+
+    // KEYBOARD EVENTS
+
+    //.keydown() - ALERTS WHEN KEY IS PRESSED
+    // $('#textfield').keydown(function() {
+    //     alert('a key was pressed!');
+    // });
+
+
+
+    // .keyup() - ALERTS WHEN KEY IS RELEASED <<<--------------
+
+    // $('#textfield').keyup(function() {
+    //     alert('a key was released!');
+    // });
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Konami Code</title>
+</head>
+<link rel="stylesheet" href="js/css/konami.css">
+<body>
+  <div class="container">
+    <h1>Konami Code</h1>
+  </div>
+
+  <h2><u> Enter this Code: </u></h2>
+
+  <div class="container2">
+<h4>Up, Up, Down, Down, Left, Right, Left, Right, UP, UP, Enter</h4>
+  </div>
+<audio id="pop">
+  <source src='js/machine-gun-129928.mp3' type="audio/mpeg">
+</audio>
+
+<img id="image">
+  <source src="js/monitor-screen-congratulations-retro-video-game-sign-77447595.jpg">
+</img>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+  "use strict";
+
+
+  $('.container').css('text-align', 'center').css('font-size', '30px');
+
+  $('.container2').css('border', '3px solid black');
+
+  $('h2').css('color', 'red').css('font-size', '40px').css('font-weight', '2px solid blackunderline ');
+
+
+
+
+  $(document).ready(function() {
+
+    let cheatCode = [38, 38, 40, 40, 37, 39, 37, 39, 38, 38, 13];
+    let codeIndex = 0;
+
+    $(document).on('keyup', function(e) {
+      let keyPressed = e.keyCode;
+      let currentKey = cheatCode[codeIndex];
+
+      if (keyPressed === currentKey) {
+        codeIndex++;
+      } else {
+        codeIndex = 0;
+      }
+      if (codeIndex === cheatCode.length) {
+        alert('YO, YOU GOT 30 FUCKIN` lIVES!');
+        $('audio#pop')[0].play();
+        $('html').css({'background-size': 'cover', 'background-image' : "url('js/monitor-screen-congratulations-retro-video-game-sign-77447595.jpg')"});
+      }
+      if (cheatCode !== [38, 38, 40, 40, 37, 39, 37, 39, 38, 38, 13 ]){
+        $(document).reset();
+      }
+      });
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>
