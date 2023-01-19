@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <title>JQUERY_FAQ</title>
   <style>
+    html{
+      background: blue;
+    }
+
+    h1{
+      text-align: center;
+      font-size: 60px;
+    }
 
     .invisible {
       color: transparent;
@@ -19,6 +27,54 @@
 
     .highlight{
       background: yellow;
+    }
+
+    h2{
+      font-size: 45px;
+      text-align: center;
+    }
+
+    h3{
+      font-size: 30px;
+    }
+
+    .highlight-btn{
+
+      display: flex;
+      position: center;
+      justify-content: center;
+    }
+
+    .toggle-answers-btn{
+      display: flex;
+      position: center;
+      justify-content: center;
+    }
+
+    .container-frames{
+      display: flex;
+      align-content: center;
+      justify-content: center;
+    }
+
+    #pic1{
+      height: 200px;
+      width: 200px;
+    }
+
+    #pic2{
+      height:200px;
+      width: 200px;
+    }
+
+    #pic3{
+      height:200px;
+      width: 200px;
+    }
+
+    #pic4{
+      height: 200px;
+      width: 200px;
     }
 
   </style>
@@ -82,9 +138,86 @@
 </dd>
 </dl>
 
-<div>
+<br>
+<div class="toggle-answers-btn">
+<div class="toggle-answers-btn">
   <button id="toggle-answers-btn">Click to view answers.</button>
 </div>
+</div>
+
+<br>
+
+<h2>San Antonio Parks and Facts</h2>
+
+<br>
+
+<h3>San Antonio Missions National Historical Park</h3>
+
+<ul id="missions-park" class="parks">
+  <li>Historical area that stretches nine miles and contains four important 18th-century missions.</li>
+  <li>Open from 9:00 AM - 5:00 PM</li>
+  <li>Located at Visitor Center at Mission San José
+    6701 San Jose Drive
+    San Antonio, TX 78214</li>
+  <li>Entrance Fee - $0.00</li>
+</ul>
+<h3>Brackenridge Park</h3>
+<ul id="brackenridge-park" class="parks">
+  <li>5:00 AM - 11:00 PM</li>
+  <li>Contains Cricket Disc Golf,  Dog Parks,  Fitness Stations (Outdoor),  Outdoor Classrooms,  School Parks,  Skate Parks,  and Tennis Courts</li>
+  <li>WiFi Services Available at certain locations</li>
+  <li>You'll never lack for something to do in San Antonio's largest park. Its grounds contain the San Antonio Zoo, a carousel, skyride, the Japanese Tea Gardens, a golf course, and playground.</li>
+</ul>
+<h3> Hemisfair Park</h3>
+<ul id="hemisfair-park" class="parks">
+  <li>Built for the 1968 HemisFair in honor of the city's 250th anniversary, this delightful park is a local favorite, particularly the water gardens and the kid-designed wood and sand playground, which includes a castle and space tunnel. The highlight is the looming 750-foot tall Tower of the Americas, offering a terrific view of the city.</li>
+  <li>Located at: 434 S Alamo St, San Antonio, TX 78205-3202</li>
+  <li>Hemisfair is open— rain or shine— seven days a week, from 5 a.m. until midnight.</li>
+  <li>Contains a splash pad</li>
+</ul>
+
+<div class="highlight-btn">
+  <button id="highlight-btn">CLICK ME!!!!</button>
+</div>
+<br><br><br><hr>
+<!--Begin Bonus-->
+
+<!--==============================================START IMAGES======================================================-->
+
+<h1> JQuery Traversing</h1>
+<br>
+<div class="container-frames">
+
+<div class="frame1 frame">
+  <img src="./images/Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg.webp" alt="" id="pic1">
+</div>
+<div class="button1">
+  <button class="topDown" id="btn1-left-top">Swap Image</button>
+</div>
+
+<div class="frame2 frame">
+  <img src="./images/download.jpeg" alt="" id="pic2">
+</div>
+<div class="button2">
+  <button class="topDown" id="btn1-left-bottom">Swap Image</button>
+</div>
+
+<div class="frame3 frame">
+  <img src="./images/640px-NTS_-_BEEF_-_WATUSI.jpg" alt="" id="pic3">
+</div>
+<div class="button3">
+  <button class="rightButtons" id="btn1-right-top">Swap Image</button>
+</div>
+
+<div class="frame4 frame">
+  <img src="./images/funny-face-12963753.jpg" alt="" id="pic4">
+</div>
+<div class="button4">
+  <button class="rightButtons" id="btn1-right-bottom">Swap Image</button>
+</div>
+
+</div>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -104,6 +237,120 @@
      $(this).toggleClass('highlight');
    })
  })
+
+ // TODO Create a button that, when clicked, makes the last li in each ul have a yellow background.
+
+    $('#highlight-btn').on('click', function(){
+      $('ul').each(function(){
+        $(this).last().children().last().css('background', 'yellow');
+
+      })
+    })
+
+
+
+
+//TODO When any h3 is clicked, the lis underneath it should be bolded. Use font-weight: bold to achieve this.
+
+ $('h3').click(function() {
+   $(this).next().children().css("font-weight", "bold");
+ });
+
+ //TODO When any list item is clicked, first li of the parent ul should have a font color of blue.
+
+ $('li').on('click', function(){
+   $(this).parent().children().first().css('color', 'blue').css('outline', '1px solid black').css('background', 'black')
+ })
+
+
+
+ //===============Bonus
+
+ let randomPic = ['img/fall-trees.jpg','img/fog-trees.jpg','img/winter-trees.jpg','img/foggy-mountains.jpg','img/ooolala.jpg','img/grandcanyon.jpg','img/waterfall.jpg','img/night-bend.jpg'];
+ let changePic = function(){
+   $("#btn-bottom").click(function(){
+     let randomIndex1 = Math.floor(Math.random() * randomPic.length);
+     let randomIndex2 = (randomIndex1+1)%(randomPic.length);
+     let randomIndex3 = (randomIndex2+1)%(randomPic.length);
+     let randomIndex4 = (randomIndex3+1)%(randomPic.length);
+
+     $('#pic1').attr('src', randomPic[randomIndex1]);
+     $('#pic2').attr('src', randomPic[randomIndex2]);
+     $('#pic3').attr('src', randomPic[randomIndex3]);
+     $('#pic4').attr('src', randomPic[randomIndex4]);
+
+   });
+ };
+ changePic();
+
+ $('#btn1-left-top').click(function(){
+   // let audio = new Audio('audio/ring-get.mp3');
+   // audio.play();
+   let first = $('#pic1').attr('src');
+   let picIndex = 1;
+   //Get random number up to 4, but if it is 1, try again
+   while (picIndex === 1) {
+     picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+   }
+
+
+   //todo SWAP IMAGES
+   let swap = $('#pic'+ picIndex).attr('src');
+   $('#pic1').attr("src", swap);
+   $('#pic'+ picIndex).attr('src', first);
+ });
+
+
+ $('#btn1-left-bottom').click(function(){
+   let first = $('#pic2').attr('src');
+   let picIndex = 2;
+
+   //todo Get random number up to 4, but if it is 1, try again
+   while (picIndex === 2) {
+     picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+   }
+
+   //todo Swap images
+   let swap = $('#pic'+ picIndex).attr('src');
+   $('#pic2').attr("src", swap);
+   $('#pic'+ picIndex).attr('src', first);
+ });
+
+ $('#btn1-right-top').click(function(){
+   let first = $('#pic3').attr('src');
+   let picIndex = 3;
+
+   //todo Get random number up to 4, but if it is 1, try again
+   while (picIndex === 3) {
+     picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+   }
+   //Swap images
+   let swap = $('#pic'+ picIndex).attr('src');
+   $('#pic3').attr("src", swap);
+   $('#pic'+ picIndex).attr('src', first);
+ });
+ $('#btn1-right-bottom').click(function(){
+   // let audio = new Audio('audio/ring-get.mp3');
+   // audio.play();
+   let first = $('#pic4').attr('src');
+   let picIndex = 4;
+   //Get random number up to 4, but if it is 1, try again
+   while (picIndex === 4) {
+     picIndex = Math.floor((Math.random() * 10) % 4) + 1;
+   }
+   //Swap images
+   let swap = $('#pic'+ picIndex).attr('src');
+   $('#pic4').attr("src", swap);
+   $('#pic'+ picIndex).attr('src', first);
+ });
+
+
+
+
+
+
+
+
 
 </script>
 </body>
