@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX BLOG</title>
+    <link rel=”stylesheet” href=”https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css”rel=”nofollow” integrity=”sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I” crossorigin=”anonymous”>
+  <style>
+
+    .background{
+      background: #6C939F;
+    }
+
+    h1{
+        display: flex;
+        justify-content: center;
+    }
+    h4{
+     font-size: 25px;
+     text-decoration: underline;
+ }
+    p{
+        font-family: "Times New Roman"
+
+    }
+
+  </style>
+</head>
+<body class="background">
+<div class="container text-justify center ">
+    <h1 class="h1">AJAX BLOG</h1>
+<br><br><hr>
+<div id="post">
+
+</div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script>
+  (function() {
+      "use strict";
+      $(document).ready(function() {
+
+          let blog = $('#post');
+          let post = $.ajax('/data/blog.json');
+          post.done(function(data){
+              data.forEach(function(item){
+                  blog.append("<div class=\"blockquote shadow-lg p-3 mb-5 bg-white\">" +
+
+                      "<h4 class=\"font\">" + item.title + "</h4>" +
+                      "<p class=\"text-muted\">" + item.content + "</p>" +
+                      "<p class=\"font-italic font3\">" + item.date + "</p>"
+                      + "</div>");
+              });
+              console.log(data);
+          });
+
+          $(function() {
+              $("#button").on("click", function() {
+                  $("body").load('#post');
+                  return false;
+              })
+          })
+
+      });
+  })();
+
+
+</script>
+</body>
+</html>

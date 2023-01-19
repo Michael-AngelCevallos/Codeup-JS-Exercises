@@ -39,13 +39,13 @@
         "use strict";
 
 
-        $.ajax('/codeup-web-exercises/data/orders.json').done(function(data){
+        $.ajax('/codeup-web-exercises/data/orders.json').done(function (data) {
             // console.log(data);
 
             let html = ''
 
-            for( let i = 0; i < data.length; i+= 1) {
-                 html += `<article>
+            for (let i = 0; i < data.length; i += 1) {
+                html += `<article>
         <h3>Order #${data[i].orderNumber}</h3>
         <dl>
             <dt>Item Ordered</dt>
@@ -59,7 +59,12 @@
             }
         })
 
-
+        $(function () {
+            $("#update").on("click", function () {
+                $("body").load('#insertProducts');
+                return false;
+    });
+    })();
         /*
             1. make a request for the data (orders.json)
             2. loop through the data and build an HTML string to create the HTML to display the data
