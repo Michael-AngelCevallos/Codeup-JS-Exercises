@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Store</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <style>
+
+    .tableCenter{
+      display: flex;
+      justify-content: center;
+    }
+    .button{
+      margin-left: 46%;
+      margin-top: 2em;
+    }
+    .background{
+      background: #6C939F;
+    }
+
+    #products{
+      border-collapse: separate;
+      border-spacing: 50px 0;
+    }
+
+    td {
+      padding: 10px 0;
+    }
+
+    .title{
+      font-size: 30px;
+    }
+
+    .quantity{
+      font-size: 30px;
+    }
+
+    .price{
+      font-size: 30px;
+    }
+
+    .categories{
+      font-size: 30px;
+    }
+  </style>
+
+</head>
+<body class="container background mt-5">
+
+<h1 class="tableCenter">My Tool Store</h1>
+<br><br><hr>
+<table id="products">
+  <thead>
+  <tr>
+    <th class="title">Title</th>
+    <th class="quantity">Quantity</th>
+    <th class="price">Price</th>
+    <th class="categories">Categories</th>
+  </tr>
+  </thead>
+  <tbody id="insertProducts"></tbody>
+</table>
+
+<button id="button" class="button">Update w/Ajax</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+<script>
+
+  (function() {
+    "use strict";
+    $(document).ready(function() {
+// TODO: Create an ajax GET request for /data/inventory.json
+
+        $.ajax('/data/inventory.json').done(function (data){
+          console.log(data);
+        })
+
+
+      let table = $('#insertProducts');
+      let store = $.ajax('/data/inventory.json');
+      store.done(function (data) {
+        data.forEach(function (item) {
+          table.append("<tr>" +
+
+                  "<th>" + item.title + "</th>" +
+                  "<th>" + item.quantity + "</th>" +
+                  "<th>" + item.price + "</th>" +
+                  "<th>" + item.categories + "</th>" +
+
+                  +"</tr>");
+        });
+        console.log(data);
+
+      });
+
+      $(function () {
+        $("#button").on("click", function () {
+          $("body").load('#insertProducts');
+          return false;
+        })
+      });
+    });
+    })();
+
+</script>
+
+</body>
+</html>
