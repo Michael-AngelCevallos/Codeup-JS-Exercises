@@ -43,6 +43,11 @@
     .categories{
       font-size: 30px;
     }
+
+    .table{
+      display: flex;
+      justify-content: center;
+    }
   </style>
 
 </head>
@@ -50,6 +55,8 @@
 
 <h1 class="tableCenter">My Tool Store</h1>
 <br><br><hr>
+
+<div class="table">
 <table id="products">
   <thead>
   <tr>
@@ -61,6 +68,7 @@
   </thead>
   <tbody id="insertProducts"></tbody>
 </table>
+</div>
 
 <button id="button" class="button">Update w/Ajax</button>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

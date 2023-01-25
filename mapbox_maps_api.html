@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Map Marker Example</title>
+  <!-- Mapbox CSS -->
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+
+  <!-- Custom CSS -->
+  <style>
+    #map {
+      /* the width and height may be set to any size */
+
+      width: 90%;
+      height: 700px;
+
+    }
+
+    #map-center{
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+<h1>My First Mapbox Map!</h1>
+<div id="map-center">
+<!-- The HTML element that serves as the Mapbox container -->
+<div id='map'></div>
+<script>
+  // mapboxgl.accessToken = 'pk.eyJ1IjoiYW5nZWw0MTM1IiwiYSI6ImNsZDg0ZXZ0MzByd2Uzb3JpdmE0eHo4NWsifQ.ChU6OuMIqZBpFdtlzVk6wA';
+  // const map = new mapboxgl.Map({
+  //   container: 'map', // container ID
+  //   style: 'mapbox://styles/mapbox/streets-v12', // style URL
+  //   center: [-98.4946, 29.4252], // starting position [lng, lat]
+  //   zoom: 9, // starting zoom
+  // });
+</script>
+</div>
+<!-- Mapbox JS -->
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="./js/js/keys.js"></script>
+<!-- Mapbox Geocoder Util Methods -->
+<script src="./js/mapbox-geocoder-utils.js"></script>
+
+<!-- Custom JS -->
+<script>
+
+  let accessToken = YOUR_ACCESS_TOKEN;
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoiYW5nZWw0MTM1IiwiYSI6ImNsZDg0ZXZ0MzByd2Uzb3JpdmE0eHo4NWsifQ.ChU6OuMIqZBpFdtlzVk6wA';
+
+
+  let  map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    zoom: 10,
+    center: [-98.4916, 29.4252]
+  });
+
+
+  let alamoInfo = {
+    address: "The Alamo",
+    popupHTML: "<p>Remember the Alamo!</p>",
+    coordinates: [-29.3533, 98.3643]
+  };
+
+  let favRest = {
+    address: "Grimaldi's Pizzeria",
+    popupHTML: "<p> Best Pizza in Town</p>",
+    marker: []
+  }
+
+  function placeMarkerAndPopup(info, token, map) {
+    geocode(info.address, token).then(function(coordinates) {
+      let popup = new mapboxgl.Popup()
+              .setHTML(info.popupHTML);
+
+
+      let marker = new mapboxgl.Marker()
+              .setLngLat(coordinates)
+              .addTo(map)
+              .setPopup(popup);
+      popup.addTo(map);
+      marker.addTo(map);
+
+
+    });
+  }
+
+  placeMarkerAndPopup(alamoInfo, accessToken, map);
+
+
+</script>
+</body>
+</html>
