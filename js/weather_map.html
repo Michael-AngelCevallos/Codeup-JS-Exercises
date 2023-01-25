@@ -9,7 +9,7 @@
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-
+    <script src="../weather-icons"></script>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
@@ -63,6 +63,8 @@ border: grey;
 
 #coordinates{
     background: white;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar{
@@ -78,7 +80,13 @@ border: grey;
     color: white;
     font-size: 30px;
 }
+
+.display-4{
+    display: flex;
+    justify-content: center;
+}
    </style>
+
 
 
 </head>
@@ -107,7 +115,7 @@ border: grey;
 <div class="container p-0">
     <div class="jumbotron jumbotron-fluid p-0">
         <div class="container">
-            <h1 class="display-4" style="background: #a7d9ff">Current Weather:</h1>
+            <h1 class="display-4" style="background: #a7d9ff">Current Weather in San Antonio, TX</h1>
             <div class="row" style="background: #e6fff6">
                 <div id="currentWeather" class="lead col"></div>
                 <div id="currentWeather2" class="lead col"></div>
@@ -127,7 +135,7 @@ border: grey;
 <!--Main Cards-->
 <div id="fiveDayForecast" class="container">
     <div class="alert alert-primary text-center" role="alert">
-        5-Day Forecast For :
+        Your New 5-Day Forecast:
     </div>
     <div class="card-deck">
         <div id="forecast1" class="card">
@@ -141,6 +149,8 @@ border: grey;
         <div id="forecast5" class="card">
         </div>
     </div>
+
+    <br><br>
     <div id="coordinates"></div>
 </div>
 
@@ -187,26 +197,25 @@ border: grey;
                 switch (mainWeatherCondition){
                     case 'Clouds':
                         currentWeatherIcon = "../wi-day-cloudy.svg"
-                        weatherVideo = "img/videos/Formation Of Clouds.mp4"
                         break;
                     case 'Thunderstorm':
                         currentWeatherIcon = "weather-icons/svg/wi-day-storm-showers.svg"
                         break;
                     case 'Drizzle':
-                        currentWeatherIcon = "../images/rain.webp)"
+                        currentWeatherIcon = "weather-icons/svg/wi-day-rain.svg"
                         break;
                     case 'Rain':
-                        currentWeatherIcon = "img/rain.png"
+                        currentWeatherIcon = "weather-icons/svg/wi-day-showers.svg"
                         break;
                     case 'Snow':
                         currentWeatherIcon = "img/snow.png"
                         break;
                     case 'Clear':
-                        currentWeatherIcon = "img/summer.png"
-                        weatherVideo = "img/videos/Footage%20Of%20Sunlight.mp4"
+                        currentWeatherIcon = "weather-icons/svg/wi-day-snow.svg"
+
                         break;
                     default:
-                        currentWeatherIcon = "img/summer.png"
+                        currentWeatherIcon = "wi-day-sunny.svg"
                 }
 
                 $('#currentCity').append(city);
@@ -241,7 +250,7 @@ border: grey;
                     $('#coordinates').html(marker._lngLat.toString())
                     destinationLat = marker._lngLat.lat;
                     destinationLng = marker._lngLat.lng;
-
+                    map.flyTo();
                     console.log(e.lngLat);
                     return marker
                 } else {
@@ -270,11 +279,11 @@ border: grey;
                     $('#searchPlaces').val("")
                     let day = [];
                     for (let i = 0; i < 6; i++) {
-                        var temp = data.list[i].main.temp.toFixed(0);
-                        var tempH = data.list[i].main.temp_max.toFixed(0);
-                        var tempL = data.list[i].main.temp_min.toFixed(0);
-                        var tempFeel = data.list[i].main.feels_like.toFixed(0);
-                        var mainWeatherCondition = data.list[i].weather[0].main;
+                        let temp = data.list[i].main.temp.toFixed(0);
+                        let tempH = data.list[i].main.temp_max.toFixed(0);
+                        let tempL = data.list[i].main.temp_min.toFixed(0);
+                        let tempFeel = data.list[i].main.feels_like.toFixed(0);
+                        let mainWeatherCondition = data.list[i].weather[0].main;
                         day.push({
                             temp: data.list[i].main.temp.toFixed(0),
                             tempH: data.list[i].main.temp_max.toFixed(0),
@@ -285,25 +294,25 @@ border: grey;
                         });
                         switch (day[i].mainWeatherCondition){
                             case 'Clouds':
-                                day[i].WeatherIcon = "img/cloud.png"
+                                day[i].WeatherIcon = "weather-icons/svg/wi-cloud.svg"
                                 break;
                             case 'Thunderstorm':
-                                day[i].WeatherIcon = "img/storm.png"
+                                day[i].WeatherIcon = "wi-day-thunderstorm.svg"
                                 break;
                             case 'Drizzle':
-                                day[i].WeatherIcon = "img/rain.png"
+                                day[i].WeatherIcon = "weather-icons/svg/wi-day-rain.svg"
                                 break;
                             case 'Rain':
-                                day[i].WeatherIcon = "img/rain.png"
+                                day[i].WeatherIcon = "weather-icons/svg/wi-day-rain-wind.svg"
                                 break;
                             case 'Snow':
-                                day[i].WeatherIcon = "img/snow.png"
+                                day[i].WeatherIcon = "weather-icons/svg/wi-day-snow.svg"
                                 break;
                             case 'Clear':
-                                day[i].WeatherIcon = "img/summer.png"
+                                day[i].WeatherIcon = "weather-icons/svg/wi-day-sunny.svg"
                                 break;
                             default:
-                                day[i].WeatherIcon = "img/summer.png"
+                                day[i].WeatherIcon = "weather-icons/svg/wi-day-sunny.svg"
                         }
                         let target;
                         switch (day[i]){
@@ -323,6 +332,75 @@ border: grey;
                                 target = $('#forecast5')
                                 break;
                         }
+
+                        map.on('load', () => {
+// Add a GeoJSON source with 3 points.
+                            map.addSource('points', {
+                                'type': 'geojson',
+                                'data': {
+                                    'type': 'FeatureCollection',
+                                    'features': [
+                                        {
+                                            'type': 'Feature',
+                                            'properties': {},
+                                            'geometry': {
+                                                'type': 'Point',
+                                                'coordinates': [-91.3952, -0.9145]
+                                            }
+                                        },
+                                        {
+                                            'type': 'Feature',
+                                            'properties': {},
+                                            'geometry': {
+                                                'type': 'Point',
+                                                'coordinates': [-90.3295, -0.6344]
+                                            }
+                                        },
+                                        {
+                                            'type': 'Feature',
+                                            'properties': {},
+                                            'geometry': {
+                                                'type': 'Point',
+                                                'coordinates': [-91.3403, 0.0164]
+                                            }
+                                        }
+                                    ]
+                                }
+                            });
+// Add a circle layer
+                            map.addLayer({
+                                'id': 'circle',
+                                'type': 'circle',
+                                'source': 'points',
+                                'paint': {
+                                    'circle-color': '#4264fb',
+                                    'circle-radius': 8,
+                                    'circle-stroke-width': 2,
+                                    'circle-stroke-color': '#ffffff'
+                                }
+                            });
+
+// Center the map on the coordinates of any clicked circle from the 'circle' layer.
+                            map.on('click', 'circle', (e) => {
+                                map.flyTo({
+                                    center: e.features[0].geometry.coordinates
+                                });
+                            });
+
+// Change the cursor to a pointer when the it enters a feature in the 'circle' layer.
+                            map.on('mouseenter', 'circle', () => {
+                                map.getCanvas().style.cursor = 'pointer';
+                            });
+
+// Change it back to a pointer when it leaves.
+                            map.on('mouseleave', 'circle', () => {
+                                map.getCanvas().style.cursor = '';
+                            });
+                        });
+
+
+
+
                         $(target).html(
                             "<img src=\"" + day[i].WeatherIcon + "\" className=\"card-img-top\" alt=\"...\">" +
                             "<div className=\"card-body\">" +
@@ -356,622 +434,4 @@ border: grey;
 
 
 
-
-<!--<!DOCTYPE html>-->
-<!-- <html lang="en">-->
-<!-- <head>-->
-<!--     <meta charset="UTF-8">-->
-<!--         <title>Cevallos Weather</title>-->
-<!--         <link rel='stylesheet'-->
-<!--               href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css'-->
-<!--               type='text/css'/>-->
-<!--         <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>-->
-<!--         <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet'/>-->
-
-<!--     <style>-->
-<!--         @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);-->
-
-<!--         body{text-align:center;margin:1em;font:1.4em "Press start 2P";font-weight:700;background-repeat:no-repeat;background-size:100vw 100vh;background-color: rgb(37,90,97)}-->
-
-<!--         *{box-sizing:border-box}-->
-
-<!--         div{text-align:center}-->
-
-<!--         hr{height:10px;visibility:hidden}-->
-
-<!--        #first{margin-left:10px;margin-top:60px;margin-bottom:10px;font-size: 100px;}-->
-
-<!--         #second{margin-left:10px;margin-top:0;margin-bottom:20px;font-size: 80px;}-->
-
-<!--         #firAndSec{  text-transform: uppercase;-->
-<!--                    background-image: linear-gradient(-->
-<!--                            -225deg,-->
-<!--                           #231557 0%,-->
-<!--                            #44107a 29%,-->
-<!--                            #ff1361 67%,-->
-<!--                            #fff800 100%-->
-<!--                    );-->
-<!--                    color: #fff;-webkit-background-clip: text;-->
-<!--                    -webkit-text-fill-color: transparent;-->
-<!--                    animation: textclip 2s linear infinite;-->
-<!--                    display: inline-block;-->
-<!--                    font-size: 20px;-->
-<!--                }-->
-
-<!--         @keyframes textclip {-->
-<!--             to {-->
-<!--               //             background-position: 200% center;-->
-<!--               //         }-->
-<!--         }-->
-
-<!--         #local{margin-top:10px;margin-left:10px}-->
-
-<!--         #head{background-image:url("../icons/undefined - Imgur.gif");background-size:110% 100%;background-repeat:no-repeat;height:150px;width:100%;;margin:10px auto; display:flex;flex-direction:column;text-align:left}-->
-
-<!--         .mapboxgl-canvas{}-->
-
-<!--         #cards{display:flex; justify-content: center; }-->
-
-<!--         #card{border: 10px solid black; background-size:100% 100%;width:200px;height:200px;overflow:scroll;}-->
-
-<!--         #card2{border: 10px solid black; background-size:100% 100%;width:200px;height:200px;overflow:scroll;}-->
-
-<!--         #card3{border: 10px solid black; background-size:100% 100%;width:200px;height:200px;overflow:scroll;}-->
-
-<!--         #card4{border: 10px solid black; background-size:100% 100%;width:200px;height:200px;overflow:scroll;}-->
-
-<!--         #card5{border: 10px solid black; background-size:100% 100%;width:200px;height:200px;overflow:scroll;}-->
-
-
-<!--         #map{box-shadow:8px 0 #fff,8px 0 #fff,0 -8px #fff,0 8px #fff,2px 0 0 4px #fff,-2px 0 0 4px #fff,0 -2px 0 4px #fff,0 2px 0 4px #fff,10px 0 #fff,-10px 0 #fff,0 -10px #fff,0 10px #fff,0 0 0 6px #fff,0 4px 0 4px #fff,0 -4px 0 4px #fff,4px 0 0 4px #fff,-4px 0 0 4px #fff;margin:10px auto;width:100%;height:520px}-->
-
-<!--         .mapboxgl-map{position:relative}-->
-
-<!--         .search-form{&#45;&#45;searchButtonWidth: 100px;height:50px;max-width:500px;margin:0 auto;  overflow:hidden;position:relative}-->
-
-<!--         .search-input{border:0;margin:0;padding:0.5rem calc(var(&#45;&#45;searchButtonWidth) + 0.5rem) 0.5rem 0.5rem;border-radius:8px;width:100%;background:#ddd;-webkit-appearance:none;font:20px "Press start 2P"}-->
-
-<!--         .search-input:focus{outline:0;background:white}-->
-
-<!--         .search-input:not(:placeholder-shown) ~-->
-
-<!--         .search-button{transform:translateX(calc(-1 * var(&#45;&#45;searchButtonWidth)))}-->
-
-<!--         .search-button{border:0;padding:0.5rem;border-radius:8px;position:absolute;top:0;left:100%;width:var(&#45;&#45;searchButtonWidth);transition:0.2s;background:blue;color:black;font:13px "Press start 2P";height:75%}-->
-
-<!--         .search-button:focus{outline:0;background:#222; }-->
-
-<!--         .screen-reader-text{position:absolute;top:-9999px;left:-9999px}-->
-<!--     </style>-->
-
-<!-- </head>-->
-
-
-
-<!-- <body>-->
-
-<!-- <div id="head"></div>-->
-
-<!-- <div id="firAndSec">-->
-<!--     <h1 id="first">Cevallos</h1>-->
-<!--     <h1 id="second">Weather</h1>-->
-<!-- </div>-->
-
-<!-- <form onsubmit=preventDefault(); class="search-form">-->
-<!--         <label for="search" class="screen-reader-text">Search</label>-->
-<!--         <input id="search"-->
-<!--                type="search" class="search-input" placeholder="City, State or Zip Code">-->
-<!--         <button class="search-button">Search</button>-->
-<!--     </form>-->
-
-<!-- <div id="cards">-->
-<!--         <div id="card"></div>-->
-<!--         <div id="card2"></div>-->
-<!--         <div id="card3"></div>-->
-<!--         <div id="card4"></div>-->
-<!--         <div id="card5"></div>-->
-<!--     </div>-->
-
-
-
-<!-- <div>-->
-<!--         <h5 id="local"></h5>-->
-<!--     </div>-->
-
-<!-- <div id='map'></div>-->
-<!-- <pre id='coordinates' class='coordinates'></pre>-->
-
-
-<!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>-->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>-->
-<!-- <script src="js/keys.js"></script>-->
-<!-- <script src="mapbox-geocoder-utils.js"></script>-->
-
-
-<!--<script>-->
-
-
-<!--    $(document).ready(function () {-->
-<!--        "use strict";-->
-
-
-<!--        let arr = [-98.4936, 29.4241];-->
-<!--        let ll = mapboxgl.LngLat.convert(arr);-->
-
-<!--        mapboxgl.accessToken = YOUR_ACCESS_TOKEN;-->
-<!--        let map = new mapboxgl.Map({-->
-<!--            container: 'map',-->
-<!--            style: 'mapbox://styles/mapbox/streets-v9',-->
-<!--            center: ll,-->
-<!--            zoom: 10-->
-<!--        });-->
-
-
-<!--        let marker = new mapboxgl.Marker({-->
-
-<!--            draggable: true,-->
-<!--            color: "#9e7e44"-->
-<!--        })-->
-<!--            .setLngLat(ll)-->
-<!--            .addTo(map);-->
-
-
-<!--        function onDragEnd() {-->
-<!--            let lngLat = marker.getLngLat();-->
-<!--            $('#card').html("");-->
-<!--            genWeatherToday();-->
-<!--            $('#card2').html("");-->
-<!--            genWeatherTomorrow();-->
-<!--            $('#card3').html("");-->
-<!--            genWeatherDayAfterTomorrow();-->
-
-<!--        }-->
-
-<!--        marker.on('dragend', onDragEnd);-->
-
-
-<!--        let monthNames = ["January", "February", "March", "April", "May", "June",-->
-<!--            "July", "August", "September", "October", "November", "December"-->
-<!--        ];-->
-<!--        let d = new Date();-->
-<!--        let month = monthNames[d.getMonth()];-->
-<!--        let day = d.getDate();-->
-<!--        let tomorrowSet = d.getDate() + 1;-->
-<!--        let dayAfterTomorrowSet = d.getDate() + 2;-->
-<!--        let today = (month < 10 ? '0' : '') + month + ' ' + (day < 10 ? '0' : '') + day + ', ' + d.getFullYear();-->
-<!--        let tomorrow = (month < 10 ? '0' : '') + month + ' ' + (tomorrowSet < 10 ? '0' : '') + tomorrowSet + ', ' + d.getFullYear();-->
-<!--        let dayAfterTomorrow = (month < 10 ? '0' : '') + month + ' ' + (dayAfterTomorrowSet < 10 ? '0' : '') + dayAfterTomorrowSet + ', ' + d.getFullYear();-->
-
-<!--        $(".search-button").click(function () {-->
-<!--            let input = $("#search").val();-->
-<!--            geocode(input, YOUR_ACCESS_TOKEN).then(function (result) {-->
-<!--                console.log(result);-->
-<!--                map.setCenter(result);-->
-<!--                map.setZoom(12);-->
-<!--                marker.setLngLat(result);-->
-<!--                $('#card').html("");-->
-<!--                genWeatherToday();-->
-<!--                $('#card2').html("");-->
-<!--                genWeatherTomorrow();-->
-<!--                $('#card3').html("");-->
-<!--                genWeatherDayAfterTomorrow();-->
-
-<!--            });-->
-<!--        });-->
-
-<!--        function genWeatherToday() {-->
-
-<!--            marker.on('dragend', onDragEnd);-->
-<!--            $('#card').html("");-->
-<!--            let lngLat = marker.getLngLat();-->
-<!--            let cord = "/" + lngLat.lat + "," + lngLat.lng;-->
-<!--            let weather = $.get("http://api.openweathermap.org/data/2.5/weather?APPID=" + {OPEN_WEATHER_APPID} + cord);-->
-<!--            let locale = reverseGeocode({-->
-<!--                lat: lngLat.lat,-->
-<!--                lng: lngLat.lng-->
-<!--            }, YOUR_ACCESS_TOKEN).then(function (result) {-->
-<!--                $("#local").html(result);-->
-<!--            });-->
-<!--            weather.done(function (data) {-->
-<!--                console.log(data);-->
-<!--                let content = "<h6>";-->
-<!--                content += today;-->
-<!--                content += "</h6>";-->
-<!--                content += "<h3 class='temp'>";-->
-<!--                content += Math.round(data.currently.temperature) + "°F";-->
-<!--                content += "</h3>";-->
-<!--                content += "<img class='icon1'>";-->
-<!--                content += "<h6 class='summary'>";-->
-<!--                content += "Summary: " + data.currently.summary;-->
-<!--                content += "</h6>";-->
-<!--                content += "<h5 class='rainChance'>";-->
-<!--                content += "Chance of rain: " + data.currently.precipProbability * 100 + "%";-->
-<!--                content += "</h5>";-->
-<!--                content += "<h5 class='humidity'>";-->
-<!--                content += "Humidity: " + Math.round(data.currently.humidity * 100) + "%";-->
-<!--                content += "</h5>";-->
-<!--                content += "<h5 class='windSpeed'>";-->
-<!--                content += "Wind Speed: " + Math.round(data.currently.windSpeed) + " MPH";-->
-<!--                content += "</h5>";-->
-
-
-<!--                $('#card').append(content);-->
-<!--                let icons = [-->
-<!--                    {-->
-<!--                        summary: "clear-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-sunny.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "clear-night",-->
-<!--                        image: 'weather-icons/svg/wi-moon-full.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "rain",-->
-<!--                        image: 'weather-icons/svg/wi-day-rain.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "snow",-->
-<!--                        image: 'weather-icons/svg/wi-day-snow.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "sleet",-->
-<!--                        image: 'weather-icons/svg/wi-day-sleet.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "wind",-->
-<!--                        image: 'weather-icons/svg/wi-day-light-wind.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "fog",-->
-<!--                        image: 'weather-icons/svg/wi-day-fog.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "cloudy",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-gusts.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-high.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-night",-->
-<!--                        image: 'weather-icons/svg/wi-night-cloudy.svg'-->
-<!--                    },-->
-
-<!--                ];-->
-<!--                let backgrounds = [-->
-<!--                    {-->
-<!--                        summary: "clear-day",-->
-<!--                        image: "url('icons/clearDay.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "clear-night",-->
-<!--                        image: "url('icons/clearNight.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "rain",-->
-<!--                        image: "url('icons/rain.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "snow",-->
-<!--                        image: "url('icons/snow.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "sleet",-->
-<!--                        image: "url('icons/snow.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "wind",-->
-<!--                        image: "url('icons/wind.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "fog",-->
-<!--                        image: "url('icons/fog.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "cloudy",-->
-<!--                        image: "url('icons/cloudy.gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-day",-->
-<!--                        image: "url('icons/undefined - Imgur (2).gif')"-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-night",-->
-<!--                        image: "url('icons/undefined - Imgur (2).gif')"-->
-<!--                    },-->
-
-<!--                ];-->
-<!--                icons.forEach(function (type) {-->
-<!--                    if (data.currently.icon === type.summary) {-->
-<!--                        $('.icon1').attr('src', type.image);-->
-<!--                    }-->
-<!--                });-->
-<!--                backgrounds.forEach(function (type) {-->
-<!--                    if (data.currently.icon === type.summary) {-->
-<!--                        $('#card').css('background-image', type.image);-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--            weather.fail(function () {-->
-<!--                console.log("try again")-->
-<!--            })-->
-<!--        }-->
-
-
-<!--        function genWeatherTomorrow() {-->
-<!--            marker.on('dragend', onDragEnd);-->
-<!--            $('#card').html("");-->
-<!--            let lngLat = marker.getLngLat();-->
-<!--            let cord = "/" + lngLat.lat + "," + lngLat.lng;-->
-<!--            let tomWeather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + cord);-->
-<!--            tomWeather.done(function (data) {-->
-<!--                let content = "<h6>";-->
-<!--                content += tomorrow;-->
-<!--                content += "</h6>";-->
-<!--                content += "<h3 class='temp'>";-->
-<!--                content += Math.round(data.daily.data[1].temperatureMax) + "°F" + "/" + Math.round(data.daily.data[1].temperatureMin) + "°F";-->
-<!--                content += "</h3>";-->
-<!--                content += "<img class='icon2'>";-->
-<!--                content += "<h6 class='summary'>";-->
-<!--                content += "Summary: " + data.daily.data[1].summary;-->
-<!--                content += "</h6>";-->
-<!--                content += "<h5 class='rainChance'>";-->
-<!--                content += "Chance of rain: " + data.daily.data[1].precipProbability * 100 + "%";-->
-<!--                content += "</h5>";-->
-<!--                content += "<h5 class='humidity'>";-->
-<!--                content += "Humidity: " + Math.round(data.daily.data[1].humidity * 100) + "%";-->
-<!--                content += "</h5>";-->
-<!--                content += "<h5 class='windSpeed'>";-->
-<!--                content += "Wind Speed: " + Math.round(data.daily.data[1].windSpeed) + " MPH";-->
-<!--                content += "</h5>";-->
-
-
-<!--                $('#card2').append(content);-->
-<!--                let icons = [-->
-<!--                    {-->
-<!--                        summary: "clear-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-sunny.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "clear-night",-->
-<!--                        image: 'weather-icons/svg/wi-moon-full.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "rain",-->
-<!--                        image: 'weather-icons/svg/wi-day-rain.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "snow",-->
-<!--                        image: 'weather-icons/svg/wi-day-snow.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "sleet",-->
-<!--                        image: 'weather-icons/svg/wi-day-sleet.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "wind",-->
-<!--                        image: 'weather-icons/svg/wi-day-light-wind.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "fog",-->
-<!--                        image: 'weather-icons/svg/wi-day-fog.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "cloudy",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-gusts.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-high.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-night",-->
-<!--                        image: 'weather-icons/svg/wi-night-cloudy.svg'-->
-<!--                    },-->
-
-<!--                ];-->
-<!--                let backgrounds = [-->
-<!--                    {-->
-<!--                        summary: "clear-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-sunny.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "clear-night",-->
-<!--                        image: 'weather-icons/svg/wi-moon-full.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "rain",-->
-<!--                        image: 'weather-icons/svg/wi-day-rain.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "snow",-->
-<!--                        image: 'weather-icons/svg/wi-day-snow.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "sleet",-->
-<!--                        image: 'weather-icons/svg/wi-day-sleet.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "wind",-->
-<!--                        image: 'weather-icons/svg/wi-day-light-wind.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "fog",-->
-<!--                        image: 'weather-icons/svg/wi-day-fog.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "cloudy",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-gusts.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-high.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-night",-->
-<!--                        image: 'weather-icons/svg/wi-night-cloudy.svg'-->
-<!--                    },-->
-
-<!--                ];-->
-<!--                icons.forEach(function (type) {-->
-<!--                    if (data.daily.data[1].icon === type.summary) {-->
-<!--                        $('.icon2').attr('src', type.image);-->
-<!--                    }-->
-<!--                });-->
-<!--                backgrounds.forEach(function (type) {-->
-<!--                    if (data.daily.data[1].icon === type.summary) {-->
-<!--                        $('#card2').css('background-image', type.image);-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--            tomWeather.fail(function () {-->
-<!--                console.log("try again")-->
-<!--            })-->
-<!--        }-->
-
-
-<!--        function genWeatherDayAfterTomorrow() {-->
-<!--            marker.on('dragend', onDragEnd);-->
-<!--            let lngLat = marker.getLngLat();-->
-<!--            let cord = "/" + lngLat.lat + "," + lngLat.lng;-->
-<!--            let aftTomWeather = $.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/" + cord);-->
-<!--            aftTomWeather.done(function (data) {-->
-<!--                var content = "<h5>";-->
-<!--                content += dayAfterTomorrow;-->
-<!--                content += "</h5>";-->
-<!--                content += "<h3 class='temp'>";-->
-<!--                content += Math.round(data.daily.data[2].temperatureMax) + "°F" + "/" + Math.round(data.daily.data[2].temperatureMin) + "°F";-->
-<!--                content += "</h3>";-->
-<!--                content += "<img class='icon3'>";-->
-<!--                content += "<h6 class='summary'>";-->
-<!--                content += "Summary: " + data.daily.data[2].summary;-->
-<!--                content += "</h6>";-->
-<!--                content += "<h5 class='rainChance'>";-->
-<!--                content += "Chance of rain: " + data.daily.data[2].precipProbability * 100 + "%";-->
-<!--                content += "</h5>";-->
-<!--                content += "<h5 class='humidity'>";-->
-<!--                content += "Humidity: " + Math.round(data.daily.data[2].humidity * 100) + "%";-->
-<!--                content += "</h5>";-->
-<!--                content += "<h5 class='windSpeed'>";-->
-<!--                content += "Wind Speed: " + Math.round(data.daily.data[2].windSpeed) + " MPH";-->
-<!--                content += "</h5>";-->
-
-
-<!--                $('#card3').append(content);-->
-<!--                let icons = [-->
-<!--                    {-->
-<!--                        summary: "clear-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-sunny.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "clear-night",-->
-<!--                        image: 'weather-icons/svg/wi-moon-full.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "rain",-->
-<!--                        image: 'weather-icons/svg/wi-day-rain.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "snow",-->
-<!--                        image: 'weather-icons/svg/wi-day-snow.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "sleet",-->
-<!--                        image: 'weather-icons/svg/wi-day-sleet.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "wind",-->
-<!--                        image: 'weather-icons/svg/wi-day-light-wind.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "fog",-->
-<!--                        image: 'weather-icons/svg/wi-day-fog.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "cloudy",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-gusts.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-high.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-night",-->
-<!--                        image: 'weather-icons/svg/wi-night-cloudy.svg'-->
-<!--                    },-->
-
-<!--                ];-->
-<!--                let backgrounds = [-->
-<!--                    {-->
-<!--                        summary: "clear-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-sunny.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "clear-night",-->
-<!--                        image: 'weather-icons/svg/wi-moon-full.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "rain",-->
-<!--                        image: 'weather-icons/svg/wi-day-rain.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "snow",-->
-<!--                        image: 'weather-icons/svg/wi-day-snow.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "sleet",-->
-<!--                        image: 'weather-icons/svg/wi-day-sleet.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "wind",-->
-<!--                        image: 'weather-icons/svg/wi-day-light-wind.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "fog",-->
-<!--                        image: 'weather-icons/svg/wi-day-fog.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "cloudy",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-gusts.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-day",-->
-<!--                        image: 'weather-icons/svg/wi-day-cloudy-high.svg'-->
-<!--                    },-->
-<!--                    {-->
-<!--                        summary: "partly-cloudy-night",-->
-<!--                        image: 'weather-icons/svg/wi-night-cloudy.svg'-->
-<!--                    },-->
-
-<!--                ];-->
-<!--                icons.forEach(function (type) {-->
-<!--                    if (data.daily.data[2].icon === type.summary) {-->
-<!--                        $('.icon3').attr('src', type.image);-->
-<!--                    }-->
-<!--                });-->
-<!--                backgrounds.forEach(function (type) {-->
-<!--                    if (data.daily.data[2].icon === type.summary) {-->
-<!--                        $('#card3').css('background-image', type.image);-->
-<!--                    }-->
-<!--                });-->
-<!--            });-->
-<!--            aftTomWeather.fail(function () {-->
-<!--                console.log("try again")-->
-<!--            })-->
-<!--        }-->
-
-<!--        genWeatherToday();-->
-<!--        genWeatherTomorrow();-->
-<!--        genWeatherDayAfterTomorrow();-->
-
-
-<!--    });-->
-
-<!--</script>-->
-<!-- </body>-->
-<!--</html>-->
-<!--</script>-->
-<!-- </body>-->
-<!--</html>-->
 
