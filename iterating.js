@@ -6,7 +6,7 @@
      * Create an array of 4 people's names and store it in a variable called
      * 'classMates'. then console.log
      */
-var classMates = ['Mike', 'John', 'Alex', 'James'];
+let classMates = ['Mike', 'John', 'Alex', 'James'];
     console.log(classMates)
     /**
      * TODO:
