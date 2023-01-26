@@ -9,7 +9,7 @@
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-    <script src="../weather-icons"></script>
+    <script src="weather-icons"></script>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
@@ -41,23 +41,23 @@ hr{
 }
 
 #forecast1{
-    border: 8px solid grey;
+    border: 5px solid grey;
 }
 
 #forecast2{
-border: grey;
+border: 5px solid grey;
        }
 
 #forecast3{
-border:grey;
+border:5px solid grey;
        }
 
 #forecast4{
-border:grey;
+border:5px solid grey;
        }
 
 #forecast5{
-border: grey;
+border: 5px solid grey;
        }
 
 
@@ -68,7 +68,7 @@ border: grey;
 }
 
 .navbar{
-    background-image: url("../icons/undefined - Imgur.gif");
+    background-image: url("icons/undefined - Imgur.gif");
     background-size: 100%;
 }
 
@@ -91,13 +91,13 @@ border: grey;
 
 </head>
 <body>
-<script src="mapbox-geocoder-utils.js"></script>
+<script src="js/mapbox-geocoder-utils.js"></script>
 
 
 <!--Navbar-->
 <nav class="navbar navbar-light bg-light">
     <a class="navbar-brand" href="#">
-        <img src="../icons/undefined - Imgur.gif" width="80" height="80" class="d-inline-block align-center " alt="" loading="lazy">
+        <img src="icons/undefined%20-%20Imgur.gif" width="80" height="80" class="d-inline-block align-center " alt="" loading="lazy">
 
         <div id="nav-weather-text" class="d-inline-block align-left">
         <p >Weather</p>
@@ -191,7 +191,7 @@ border: grey;
                 let description = data.weather[0].description;
                 let mainWeatherCondition = data.weather[0].main;
                 let currentWeatherIcon;
-                let weatherVideo;
+
 
 
                 switch (mainWeatherCondition){
@@ -250,7 +250,7 @@ border: grey;
                     $('#coordinates').html(marker._lngLat.toString())
                     destinationLat = marker._lngLat.lat;
                     destinationLng = marker._lngLat.lng;
-                    map.flyTo();
+
                     console.log(e.lngLat);
                     return marker
                 } else {
@@ -258,6 +258,7 @@ border: grey;
                     marker = new mapboxgl.Marker()
                         .setLngLat(e.lngLat)
                         .addTo(map);
+
                 }
                 destinationLat = marker._lngLat.lat;
                 destinationLng = marker._lngLat.lng;
@@ -278,7 +279,7 @@ border: grey;
                 }).done(function(data){
                     $('#searchPlaces').val("")
                     let day = [];
-                    for (let i = 0; i < 6; i++) {
+                    for (let i = 0; i < 8; i++) {
                         let temp = data.list[i].main.temp.toFixed(0);
                         let tempH = data.list[i].main.temp_max.toFixed(0);
                         let tempL = data.list[i].main.temp_min.toFixed(0);
