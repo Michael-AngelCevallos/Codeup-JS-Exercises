@@ -85,33 +85,33 @@
 
 /** ES6 Method For ARRAYS */
 
-// const users = [
-//     {
-//         name: " MIKE",
-//         languages: ['spanish', 'english']
-//     },
-//     {
-//         name: "Yason",
-//         languages: ['spanish', 'french']
-//
-//     }
-// ];
-//
-// let otherUsers = [
-//     {
-//         name: 'Bart',
-//         email: 'barta@gmail.com',
-//         languages: ['japanese', 'french']
-//     }
-// ]
-//
-//
-// let lastNewUser = [
-//     {
-//         name: 'Jesus',
-//         languages: ['everything']
-//     }
-// ]
+const users = [
+    {
+        name: " MIKE",
+        languages: ['spanish', 'english']
+    },
+    {
+        name: "Yason",
+        languages: ['spanish', 'french']
+
+    }
+];
+
+let otherUsers = [
+    {
+        name: 'Bart',
+        email: 'barta@gmail.com',
+        languages: ['japanese', 'french']
+    }
+]
+
+
+let lastNewUser = [
+    {
+        name: 'Jesus',
+        languages: ['everything']
+    }
+]
 
 
 
@@ -131,37 +131,37 @@ const person = {name: 'codeup', age: 4}
 
 
 //todo SPREAD OPERATOR
-// let newUserArray = [
-//     ...users,
-//     ...otherUsers,
-//     ...lastNewUser
-//
-// ];
-// console.log(newUserArray)
-//
-//
-//
-// // TODO FINDING THE HIGHEST NUMBER IN AN ARRAY
-// let numbers = [1,2,3,13,27,4,13];
-// console.log(Math.max(...numbers)) //  returns 27
-//
-//
-// // TODO LOGGING THE PROPERTIES OF AN OBJECT IN A SPECIFIC VARIABLE
-//
-// let obj1 = {
-//     a: 1,
-//     b:2
-// };
-// let obj2 = {
-//     a: 3,
-//     b:4
-// };
-// let obj3 = {
-//     a:5,
-//     b:6
-// }
-//
-//  console.log(obj3)
+let newUserArray = [
+    ...users,
+    ...otherUsers,
+    ...lastNewUser
+
+];
+console.log(newUserArray)
+
+
+
+// TODO FINDING THE HIGHEST NUMBER IN AN ARRAY
+let numbers = [1,2,3,13,27,4,13];
+console.log(Math.max(...numbers)) //  returns 27
+
+
+// TODO LOGGING THE PROPERTIES OF AN OBJECT IN A SPECIFIC VARIABLE
+
+let obj1 = {
+    a: 1,
+    b:2
+};
+let obj2 = {
+    a: 3,
+    b:4
+};
+let obj3 = {
+    a:5,
+    b:6
+}
+
+console.log(obj3)
 
 
 
@@ -174,6 +174,9 @@ const person = {name: 'codeup', age: 4}
 //     });
 
 
+
+
+/** todo EXERCISE ES6 STARTS HERE <<<<<<<<-----------------*/
 
 /*
  * Complete the TODO items below
@@ -222,9 +225,8 @@ const name = 'Mike'
 const email = 'michaelcevallos94@yahoo.com';
 const languages = ['css', 'js', 'jquery', 'bootstrap'];
 
-
-
 // TODO: rewrite the object literal using object property shorthand
+
 const user = {
     name,
     email,
@@ -237,7 +239,6 @@ users.push({
     languages: languages
 });
 console.log(users);
-
 
 
 // TODO: replace `var` with `let` in the following variable declarations
@@ -253,13 +254,14 @@ users.forEach(user => {
 // another way to write out a foreach function
 users.forEach(user => names.push(user.name));
 console.log(user.name);
-users.forEach(function(user) {
-    return names.push(user.name);
-});
+
+
 
 // TODO: replace `var` with `let` in the following declaration
 let developers = [];
-users.forEach((user) => {
+users.forEach(function(user) {
+
+
     // TODO: rewrite the code below to use object destructuring assignment
     //       note that you can also use destructuring assignment in the function
     //       parameter definition
@@ -267,22 +269,48 @@ users.forEach((user) => {
     // const email = user.email;
     // const languages = user.languages;
 
-    const {name, email, languages}  = user;
-
+    console.log(user);
     // TODO: rewrite the assignment below to use template strings
+
     // developers.push(name + '\'s email is ' + email + name + ' knows ' + languages.join(', '));
 
+
+    /** ANSWER */
     developers.push(`${name}'s email is ${email},  ${name} knows ${languages}`);
 });
-
 console.log(developers);
+
+
 // TODO: Use `let` for the following variable
+// var list = '<ul>';
+
+
+/** ANSWER */
 let list = '<ul>';
 
+
+
 // TODO: rewrite the following loop to use a for..of loop
-developers.forEach(function (developer) {
+// developers.forEach(function (developer) {
+
+
+/** Answer */
+for (let developer of developers) {
+    list += `<li> ${developer} </li>`;
+
+}
 
     // TODO: rewrite the assignment below to use template strings
-    list += '<li>' + developer + '</li>';
-});
-list += '</ul>';
+//     list += '<li>' + developer + '</li>';
+// });
+// list += '</ul>';
+
+
+
+/**Answer */
+list += `</ul>`;
+
+console.log(list);
+document.getElementById("message").innerHTML = list;
+
+document.body.innerHTML = list;
