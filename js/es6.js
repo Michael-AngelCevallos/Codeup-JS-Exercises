@@ -84,34 +84,34 @@
 // console.log(user)
 
 /** ES6 Method For ARRAYS */
-
-const users = [
-    {
-        name: " MIKE",
-        languages: ['spanish', 'english']
-    },
-    {
-        name: "Yason",
-        languages: ['spanish', 'french']
-
-    }
-];
-
-let otherUsers = [
-    {
-        name: 'Bart',
-        email: 'barta@gmail.com',
-        languages: ['japanese', 'french']
-    }
-]
-
-
-let lastNewUser = [
-    {
-        name: 'Jesus',
-        languages: ['everything']
-    }
-]
+//
+// const users = [
+//     {
+//         name: " MIKE",
+//         languages: ['spanish', 'english']
+//     },
+//     {
+//         name: "Yason",
+//         languages: ['spanish', 'french']
+//
+//     }
+// ];
+//
+// let otherUsers = [
+//     {
+//         name: 'Bart',
+//         email: 'barta@gmail.com',
+//         languages: ['japanese', 'french']
+//     }
+// ]
+//
+//
+// let lastNewUser = [
+//     {
+//         name: 'Jesus',
+//         languages: ['everything']
+//     }
+// ]
 
 
 
@@ -131,14 +131,14 @@ const person = {name: 'codeup', age: 4}
 
 
 //todo SPREAD OPERATOR
-let newUserArray = [
-    ...users,
-    ...otherUsers,
-    ...lastNewUser
-
-];
-console.log(newUserArray)
-
+// let newUserArray = [
+//     ...users,
+//     ...otherUsers,
+//     ...lastNewUser
+//
+// ];
+// console.log(newUserArray)
+//
 
 
 // TODO FINDING THE HIGHEST NUMBER IN AN ARRAY
@@ -233,11 +233,7 @@ const user = {
     languages
 };
 
-users.push({
-    name: name,
-    email: email,
-    languages: languages
-});
+users.push(user);
 console.log(users);
 
 
@@ -245,15 +241,29 @@ console.log(users);
 let emails = [];
 let names = [];
 
+
 // TODO: rewrite the following using arrow functions
+
+
+// // todo Function Method
+// function doThisThang (){
+//
+// }
+//
+// //todo Const with Arrow function Method EASIEST
+// const doThisThang = () => {
+//
+// }
+
+
 users.forEach(user => {
     emails.push(user.email);
     console.log(user.email);
 });
 
-// another way to write out a foreach function
-users.forEach(user => names.push(user.name));
-console.log(user.name);
+// todo another way to write out a forEach function
+// users.forEach(user => names.push(user.name));
+// console.log(user.name);
 
 
 
@@ -269,6 +279,9 @@ users.forEach(function(user) {
     // const email = user.email;
     // const languages = user.languages;
 
+    /** ANSWER */
+    const {name, email, languages} = user;
+
     console.log(user);
     // TODO: rewrite the assignment below to use template strings
 
@@ -276,7 +289,9 @@ users.forEach(function(user) {
 
 
     /** ANSWER */
-    developers.push(`${name}'s email is ${email},  ${name} knows ${languages}`);
+    // let formattedName = name.charAt(0).toUpperCase() + name.slice(1);   <<<---- Finish THis, Makes first letter of name Uppercase
+
+    developers.push(`${name}'s email is ${email},  ${name} knows ${languages.join(',')}`);
 });
 console.log(developers);
 
@@ -311,6 +326,6 @@ for (let developer of developers) {
 list += `</ul>`;
 
 console.log(list);
-document.getElementById("message").innerHTML = list;
+// document.getElementById("message").innerHTML = list;
 
-document.body.innerHTML = list;
+// document.body.innerHTML = list;
