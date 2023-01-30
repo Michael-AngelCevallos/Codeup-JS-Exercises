@@ -20,7 +20,35 @@ wait(5000).then((data) => console.log(data + '  APPLES!!!!!!'));
 
 
 
+//todo This is how you can write them apart
 
+
+let promise1 = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        resolve('You\'ll see this after 1 second');
+    }, 1000);
+});
+
+promise1.then(function(value) {
+    console.log(value);
+});
+let promise2 = new Promise(function(resolve, reject) {
+    setTimeout(function() {
+        resolve('You\'ll see this after 3 seconds');
+    }, 3000);
+});
+
+promise2.then(function(value) {
+    console.log(value);
+});
+let promise3 =  new Promise(function (resolve, reject){
+    setTimeout(function () {
+        resolve('You\'ll see this after 5 seconds');
+    }, 5000)
+});
+promise3.then(function (value){
+    console.log(value);
+})
 
 
 
