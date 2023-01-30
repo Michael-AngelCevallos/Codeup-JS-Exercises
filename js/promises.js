@@ -9,35 +9,33 @@
 function wait(num){
     return new Promise ((resolve) =>{
         setTimeout(() =>{
-            resolve("Your promise will resolve after " + num + " milliseconds");
+            resolve("Your promise will resolve after " + num + " milliseconds  ----->>>>  ");
         }, num)
     });
 }
 
-wait(1000).then((data) => console.log(data));
-wait(3000).then((data) => console.log(data));
-wait(5000).then((data) => console.log(data));
+wait(1000).then((data) => console.log(data + '  MONKEYS !!'));
+wait(3000).then((data) => console.log(data + '  BANANAS!!!'));
+wait(5000).then((data) => console.log(data + '  APPLES!!!!!!'));
 
 
 
-function getUserLastCommit(username) {
-    let url = `https://api.github.com/users/${username}/events/public`;
 
-    console.log(url);
 
-    return fetch(url, {headers: {'Authorization': 'GIT_TOKEN'}})
-        .then((response) => response.json())
-        .then((listOfEvents)=>{
-            console.log(listOfEvents);
-            for(let event of listOfEvents) {
-                if(event.type ==='PushEvent'){
-                    return event.created_at;
-                }
-            }
-        })
-}
 
-getUserLastCommit('Michael-AngelCevallos').then(r => console.log());
+
+//  todo Create a function that accepts a GitHub username, and returns a promise that resolves returning just the date of the last commit that user made. Reference the github api documentation to achieve this.
+
+
+const lastCommit = (username) => {
+    fetch(`https://api.github.com/users/${username}/events`, {headers: {"Authorization": `GIT_TOKEN`}})
+        .then(resp => resp.json())
+        .then(data => data.find(event => event.type === "PushEvent"))
+        .then(event => event.created_at)
+        .then(date => console.log(date));
+};
+
+lastCommit("Michael-AngelCevallos");
 
 
 
