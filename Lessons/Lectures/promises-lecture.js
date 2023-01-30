@@ -62,22 +62,38 @@ async function getUsersAsync () {
 
 }
 
+//get a specific user
+
+async function getUser(){
+    let username = 'Michael-AngelCevallos'
+    let response = await fetch(`https://api.github.com/users/${username}`, {
+        headers: {
+            'Authorization': `token ${username}`
+        }
+    });
+    console.log(response);
+    let data = await response.json();
+    return data;
+
+}
+
+console.log(getUser())
 
 //iife arrow function
-(async () => {
-    try {
-        let users = await getUsers();
-        let repos = await getRepos();
-    }
-    catch (error) {
-
-    }
-})();
-
-
-
-
-console.log(getUsersAsync());
+// (async () => {
+//     try {
+//         let users = await getUsers();
+//         let repos = await getRepos();
+//     }
+//     catch (error) {
+//
+//     }
+// })();
+//
+//
+//
+//
+// console.log(getUsersAsync());
 
 
 console.log("This Happened After The Fetch")
