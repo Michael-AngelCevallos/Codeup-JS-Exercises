@@ -5,6 +5,6 @@ const MAPBOX_TOKEN = 'pk.eyJ1IjoiYW5nZWw0MTM1IiwiYSI6ImNsZDg0ZXZ0MzByd2Uzb3JpdmE
 
 
 // USED in promises-lecture
-const PROMISES_PRAC_API = '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'
+const GIT_TOKEN  = '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'
 
 
