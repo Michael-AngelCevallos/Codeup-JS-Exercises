@@ -41,18 +41,29 @@ const users = [
 //  todo Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
 // todo .filter takes in a function which receives an item and decides (returns boolean) whether the item should make it or not
 
-const threes = users.filter(user => user.languages.length >= 3);
+const threes = users.filter(user => {
+    return user.languages.length >= 3;
+})
 
-console.log(threes);
+console.log(threes)
 
+
+
+/** One Liner Method */
+// const threes = users.filter(user => {user.languages.length >= 3});
+//
+// console.log(threes);
 
 // todo Use .map to create an array of strings where each element is a user's email address
 //
 
-let userEmails = users.map(user =>
-    user.email);
+const userEmails = users.map(user => user.email);
 
 console.log(userEmails);
+
+
+
+
 
 // todo Use .reduce to get the total years of experience from the list of users. Once you get the total of years you
 // todo can use the result to calculate the average.
@@ -71,6 +82,19 @@ console.log(totalyears / users.length);
 
 
 
+//OR    <<<<-----------------
+
+// const totalExperience = users.reduce((totalYears, user) => {
+//     totalYears += user.yearsOfExperience;
+//     return totalYears;
+// }, 0)
+//
+// console.log(totalExperience);
+
+
+
+
+
 // todo Use .reduce to get the longest email from the list of users.
 
 
@@ -80,32 +104,33 @@ let longestemail2 = users.reduce((longestSoFar, user) => {
 }, "");
 
 
-// todo
-
- let longestemail = userEmails.reduce(function (a, b)
-{ return a.length > b.length ? a : b; });
+// // todo
+//
+//  const longestemail = userEmails.reduce(function (a, b) {
+//      return a.length > b.length ? a : b;
+//  });
 
 console.log(longestemail2);
 
 
+
+
+//todo Use .reduce  to get the list of the users name in a single string.
 // Example: Your instructors are: ryan, luis, zach, fernando, justin.
 
-let greeting = users.reduce((runningGreeting, user) => {
-    return runningGreeting += user.name + ', ';
-}, "your instructors are: " );
-console.log(greeting);
-greeting =greeting.substring(0, greeting.length-2) + '.';
+const userNames = users.reduce((str, user) => {
+    str += user.name + ', ';
+    return str
+}, 'Your Instructors are ').slice(0,-2) + '.';
+
+console.log(userNames)
 
 
-let instructors = users.reduce((instructorStack ,user) =>{
-    return instructorStack.concat(user.name)
-},[]);
 
-console.log(`"Your instructors are:" ${instructors}`);
 
-// Use .reduce to get the unique list of languages from the list of users.
+// todo Use .reduce to get the unique list of languages from the list of users.
 
-let knownlanguages = user.reduce((languages, user) =>{
+let knownlanguages = users.reduce((languages, user) =>{
     for(let lang in user.languages){
         if (!languages.includes(lang)) {
             languages.push(lang);
