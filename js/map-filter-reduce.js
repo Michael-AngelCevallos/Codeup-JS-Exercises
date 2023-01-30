@@ -38,15 +38,15 @@ const users = [
 
 
 
-// Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
-// .filter takes in a function which recieves an item and decides (returns boolean) whether the item should make it or not
+//  todo Use .filter to create an array of user objects where each user object has at least 3 languages in the languages array.
+// todo .filter takes in a function which receives an item and decides (returns boolean) whether the item should make it or not
 
 const threes = users.filter(user => user.languages.length >= 3);
 
 console.log(threes);
 
 
-// Use .map to create an array of strings where each element is a user's email address
+// todo Use .map to create an array of strings where each element is a user's email address
 //
 
 let userEmails = users.map(user =>
@@ -54,8 +54,8 @@ let userEmails = users.map(user =>
 
 console.log(userEmails);
 
-// Use .reduce to get the total years of experience from the list of users. Once you get the total of years you
-// can use the result to calculate the average.
+// todo Use .reduce to get the total years of experience from the list of users. Once you get the total of years you
+// todo can use the result to calculate the average.
 
 let totalyears = users .reduce((userStack ,user) =>{
     return userStack += user.yearsOfExperience;
@@ -71,16 +71,20 @@ console.log(totalyears / users.length);
 
 
 
-// Use .reduce to get the longest email from the list of users.
-let longestemail2 =users.reduce((longestSoFar, user) => {
+// todo Use .reduce to get the longest email from the list of users.
+
+
+let longestemail2 = users.reduce((longestSoFar, user) => {
     if (user.email.length > longestSoFar.length) return user.email;
     return longestSoFar;
 }, "");
 
 
-// var longestemail = userEmails.reduce(function (a, b)
-// { return a.length > b.length ? a : b; });
-//
+// todo
+
+ let longestemail = userEmails.reduce(function (a, b)
+{ return a.length > b.length ? a : b; });
+
 console.log(longestemail2);
 
 
