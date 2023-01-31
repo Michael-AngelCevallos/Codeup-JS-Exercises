@@ -4,7 +4,7 @@
 //  get created_at property and return from the function
 
 
-//refactor to use Async/Await
+//refactor to use Async/Await (EXAMPLE LOCATED AT THE BOTTOM)
 
 
 
@@ -69,19 +69,19 @@
 
 
 
-    function lastCommit(userName) {
-        return fetch(`https://api.github.com/users/${userName}/events`, {headers: {'Authorization': `GIT_TOKEN`}})
-            .then((data) => {
-                // console.log(data);
-                return data.json()
-            }).then((jsonData) => {
-                // console.log(jsonData);
-                return "Date of last commit:  " + jsonData[0].created_at + "  user name is: " + jsonData[0].actor.display_login
-            })
-    }
-
-
-    lastCommit('Michael-AngelCevallos').then((data) => console.log(data));
+    // function lastCommit(userName) {
+    //     return fetch(`https://api.github.com/users/${userName}/events`, {headers: {'Authorization': `GIT_TOKEN`}})
+    //         .then((data) => {
+    //             // console.log(data);
+    //             return data.json()
+    //         }).then((jsonData) => {
+    //             // console.log(jsonData);
+    //             return "Date of last commit:  " + jsonData[0].created_at + "  user name is: " + jsonData[0].actor.display_login
+    //         })
+    // }
+    //
+    //
+    // lastCommit('Michael-AngelCevallos').then((data) => console.log(data));
 
 
 /** HOW TO WRITE REFACTOR DATE IN CONSOLE LOG TO MAKE READABLE <<<------
@@ -106,10 +106,32 @@
 // };
 //
 // lastCommit("Michael-AngelCevallos");
+//
 
 
+/** ASYNC METHOD */
 
-
+// async function getLastCommitDate(username){
+//         const url = `https://api.github.com/users/${username}/events/public`
+//     const options = {
+//             headers: {
+//                 'Authorization' : `token ${GIT_TOKEN}`
+//             }
+//     }
+//                 const eventsResponse = await fetch (url, options);
+//                 const events =  await eventsResponse.json();
+//                 const PushEvents = events.filter(event => event.type = 'PushEvent')[0]
+//                 const mostRecentPush = PushEvents[0];
+//                 const pushCreatedAt = mostRecentPush.created_at;
+//                 return new Date(pushCreatedAt).toLocaleString;
+//
+//
+//             }
+//
+//
+// getLastCommitDate("Michael-AngelCevallos").then((data) => {
+//     console.log(data)
+// })
 
 
 
@@ -141,3 +163,7 @@
 // getLastCommitDate("Michael-AngelCevallos").then((data) => {
 //     console.log(data)
 // })
+
+
+
+
