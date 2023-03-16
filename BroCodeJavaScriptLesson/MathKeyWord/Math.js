@@ -4,5 +4,6 @@ let x = 3.14
 
 // same as
 
-x =Math.round(3.14)
-)
+x =Math.round(x);
+
+console.log(x);
