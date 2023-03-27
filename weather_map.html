@@ -423,6 +423,24 @@ border: 5px solid grey;
         });
     })();
 </script>
+
+<script>
+
+        function jumpToCity() {
+        let city = document.getElementById("city").value;
+        let geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: city }, function(results, status) {
+        if (status === "OK") {
+        let map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 12,
+        center: results[0].geometry.location
+    });
+    } else {
+        alert("Geocode was not successful for the following reason: " + status);
+    }
+    });
+    }
+</script>
 </body>
 </html>
 
